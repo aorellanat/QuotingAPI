@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotingAPI", "QuotingAPI\QuotingAPI.csproj", "{05F1BEB5-1A19-463B-90DE-5E8E37DE0E0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{BB2C5E21-1637-4458-BE31-F26F056803ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{FB325BC5-11DF-4F14-AEA1-7C03893DBC13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{05F1BEB5-1A19-463B-90DE-5E8E37DE0E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F1BEB5-1A19-463B-90DE-5E8E37DE0E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F1BEB5-1A19-463B-90DE-5E8E37DE0E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2C5E21-1637-4458-BE31-F26F056803ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2C5E21-1637-4458-BE31-F26F056803ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2C5E21-1637-4458-BE31-F26F056803ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2C5E21-1637-4458-BE31-F26F056803ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB325BC5-11DF-4F14-AEA1-7C03893DBC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB325BC5-11DF-4F14-AEA1-7C03893DBC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB325BC5-11DF-4F14-AEA1-7C03893DBC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB325BC5-11DF-4F14-AEA1-7C03893DBC13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
