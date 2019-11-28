@@ -7,23 +7,19 @@ namespace Services.Models
 {
     public class QuoteDTO
     {
-        public int Id { get; set; }
-        public string IdClient { get; set; }
-        public string IdProducts { get; set; }
-        public float Price { get; set; }
+        public string QuoteName { get; set; }
+        public string ClientCode { get; set; }
         public DateTime Date { get; set; }
         public bool Sold { get; set; }
-        public int Quantity { get; set; }
+        public List<QuoteLineItemDTO> QuoteLineItems { get; set; }
 
-        public QuoteDTO(int id, string idClient, string idProducts, float price, DateTime date, bool sold, int quantity)
+        public QuoteDTO(string quoteName, string clientCode, DateTime date, bool sold, List<QuoteLineItemDTO> quoteLineItemDTOs)
         {
-            Id = id;
-            IdClient = idClient;
-            IdProducts = idProducts;
-            Price = price;
+            QuoteName = quoteName;
+            ClientCode = clientCode;
             Date = date;
             Sold = sold;
-            Quantity = quantity;
+            QuoteLineItems = quoteLineItemDTOs;
         }
     }
 }
