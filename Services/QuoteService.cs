@@ -10,8 +10,15 @@ namespace Services
         public List<QuoteDTO> GetAllQuotes()
         {
             List<QuoteDTO> quotesDTO = new List<QuoteDTO>();
-            QuoteDTO quoteDTO = new QuoteDTO(2, "MT-0623", "REF-2305", 5, new DateTime(), true, 5);
+            List<QuoteLineItemDTO> quoteLineItemDTOs = new List<QuoteLineItemDTO>();
+
+            QuoteLineItemDTO quoteLineItemDTO = new QuoteLineItemDTO("COT-01", "EMP-000001", 5, 10);
+            quoteLineItemDTOs.Add(quoteLineItemDTO);
+
+            QuoteDTO quoteDTO = new QuoteDTO("COT-01", "MTR-300065", new DateTime(), true, quoteLineItemDTOs);
+
             quotesDTO.Add(quoteDTO);
+
             return quotesDTO;
         }
     }
