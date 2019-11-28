@@ -21,5 +21,13 @@ namespace QuotingAPI.Controllers
             return Ok(quoteService.GetAllQuotes());
         }
 
+        // GET by quoteName
+
+
+        // POST
+
+        // PUT
+
+        // DELETE
     }
 }

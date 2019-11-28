@@ -21,5 +21,11 @@ namespace Services
 
             return quotesDTO;
         }
+
+        // GetQuoteByName()
+
+        // UpdateQuote()
+
+        // DeleteQuote()
     }
 }
