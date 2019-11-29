@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Services
 {
-    public class QuoteService
+    public class QuoteService:IQuoteService
     {
         public List<QuoteDTO> GetAllQuotes()
         {
