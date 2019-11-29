@@ -22,14 +22,14 @@ namespace QuotingAPI.Controllers
             _config = config;
         }
 
-        // GET api/values
+        // GET quotes
         [HttpGet]
         [Route("quote-management/quotes")]
         public ActionResult<dynamic> GetAll()
         {
             dynamic temp = new
             {
-                QuoteLineItemDTO = _quoteservice.GetAllQuotes()
+                quoteList = _quoteservice.GetAll()
             };
             return temp;
         }
@@ -37,24 +37,38 @@ namespace QuotingAPI.Controllers
         // GET by name
 
         [HttpGet]
-        [Route("quote-management/quotes/{key}")]
-        public ActionResult<QuoteDTO> GetbyName([FromRoute] string key)
+        [Route("quote-management/quotes/{quoteName}")]
+        public ActionResult<QuoteDTO> GetByName([FromRoute] string quoteName)
         {
-            return Ok(_quoteservice.GetQuotebyname(key));
+            return Ok(_quoteservice.GetQuoteByname(quoteName));
         }
 
 
         // POST
         [HttpPost]
         [Route("quote-management/quotes")]
-        public IActionResult PostQuote([FromBody] QuoteDTO quote)
+        public IActionResult Post([FromBody] QuoteDTO quote)
         {
-            _quoteservice.postQuotes(quote);
+            _quoteservice.PostQuote(quote);
             return Ok();
         }
 
         // PUT
+        [HttpPut]
+        [Route("quote-management/quotes/{quoteName}")]
+        public IActionResult Update([FromRoute] string quoteName, [FromBody] QuoteDTO quoteUpdated)
+        {
+            _quoteservice.UpdateByName(quoteName, quoteUpdated);
+            return Ok();
+        }
 
         // DELETE
+        [HttpDelete]
+        [Route("quote-management/quotes/{quoteName}")]
+        public IActionResult DeleteByName([FromRoute] string quoteName)
+        {
+            _quoteservice.DeleteByName(quoteName);
+            return Ok();
+        }
     }
 }

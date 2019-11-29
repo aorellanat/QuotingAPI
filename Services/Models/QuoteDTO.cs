@@ -12,14 +12,5 @@ namespace Services.Models
         public DateTime Date { get; set; }
         public bool Sold { get; set; }
         public List<QuoteLineItemDTO> QuoteLineItems { get; set; }
-
-        public QuoteDTO(string quoteName, string clientCode, DateTime date, bool sold, List<QuoteLineItemDTO> quoteLineItemDTOs)
-        {
-            QuoteName = quoteName;
-            ClientCode = clientCode;
-            Date = date;
-            Sold = sold;
-            QuoteLineItems = quoteLineItemDTOs;
-        }
     }
 }

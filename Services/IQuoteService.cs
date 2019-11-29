@@ -7,8 +7,11 @@ namespace Services
 {
     public interface IQuoteService
     {
-        List<QuoteDTO> GetAllQuotes();
-        QuoteDTO GetQuotebyname(string QuoteName);
-        void postQuotes(QuoteDTO newQuoteDTO);
+        List<QuoteDTO> GetAll();
+        QuoteDTO GetQuoteByname(string quoteName);
+        void PostQuote(QuoteDTO newQuoteDTO);
+        void UpdateByName(string quoteName, QuoteDTO quoteUpdated);
+        void DeleteByName(string quoteName);
+
     }
 }
