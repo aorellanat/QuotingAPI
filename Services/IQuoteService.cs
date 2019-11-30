@@ -15,7 +15,7 @@ namespace Services
 
         Quote Save(Quote quote);
 
-        void UpdateByName(string quoteName, Quote quoteUpdated);
+        Quote UpdateByName(string quoteName, Quote quoteUpdated);
 
         void DeleteByName(string quoteName);
     }

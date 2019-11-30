@@ -64,10 +64,10 @@ namespace QuotingAPI.Controllers
         // PUT
         [HttpPut]
         [Route("quote-management/quotes/{quoteName}")]
-        public IActionResult Update([FromRoute] string quoteName, [FromBody] Quote quoteToUpdate)
+        public ActionResult<Quote> Update([FromRoute] string quoteName, [FromBody] Quote quoteToUpdate)
         {
-            _quoteservice.UpdateByName(quoteName, quoteToUpdate);
-            return Ok();
+            return Ok(_quoteservice.UpdateByName(quoteName, quoteToUpdate));
+            
         }
 
         // DELETE

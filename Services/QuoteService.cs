@@ -121,7 +121,7 @@ namespace Services
             }
         }
 
-        public void UpdateByName(string quoteName, Quote quoteUpdated)
+        public Quote UpdateByName(string quoteName, Quote quoteUpdated)
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
@@ -137,6 +137,7 @@ namespace Services
             {
                 int index = quotes.IndexOf(quotes.Find(quote => quote.QuoteName.Equals(quoteName)));
                 quotes[index] = quoteUpdated;
+                return quotes[index];
             }
             catch (System.Exception)
             {
