@@ -25,40 +25,40 @@ namespace QuotingAPI.Controllers
         // GET quotes
         [HttpGet]
         [Route("quote-management/quotes")]
-        public ActionResult<dynamic> GetAll()
+        public ActionResult<IEnumerable<Quote>> GetAll()
         {
-            dynamic temp = new
-            {
-                quoteList = _quoteservice.GetAll()
-            };
-            return temp;
+            return _quoteservice.GetAll();
         }
 
         // GET by name
-
         [HttpGet]
         [Route("quote-management/quotes/{quoteName}")]
-        public ActionResult<QuoteDTO> GetByName([FromRoute] string quoteName)
+        public ActionResult<Quote> GetByName([FromRoute] string quoteName)
         {
-            return Ok(_quoteservice.GetQuoteByname(quoteName));
+            return Ok(_quoteservice.GetQuoteByName(quoteName));
         }
 
+        // GET REPORTS
+        /* [HttpGet]
+        [Route("quote-management/quotes/pending")] sold = false
+
+        [HttpGet]
+        [Route("quote-management/quotes/sold")] sold = true*/
 
         // POST
         [HttpPost]
         [Route("quote-management/quotes")]
-        public IActionResult Post([FromBody] QuoteDTO quote)
+        public ActionResult<Quote> Create([FromBody] Quote newQuote)
         {
-            _quoteservice.PostQuote(quote);
-            return Ok();
+            return Ok(_quoteservice.Save(newQuote));
         }
 
         // PUT
         [HttpPut]
         [Route("quote-management/quotes/{quoteName}")]
-        public IActionResult Update([FromRoute] string quoteName, [FromBody] QuoteDTO quoteUpdated)
+        public IActionResult Update([FromRoute] string quoteName, [FromBody] Quote quoteToUpdate)
         {
-            _quoteservice.UpdateByName(quoteName, quoteUpdated);
+            _quoteservice.UpdateByName(quoteName, quoteToUpdate);
             return Ok();
         }
 

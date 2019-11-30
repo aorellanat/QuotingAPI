@@ -7,83 +7,34 @@ namespace Services
 {
     public class QuoteService:IQuoteService
     {
-        public List<QuoteDTO> GetAll()
+        public List<Quote> GetAll()
         {
-            List<QuoteDTO> quotesDTO = new List<QuoteDTO>();
-            List<QuoteLineItemDTO> quoteLineItemDTOs = new List<QuoteLineItemDTO>();
-
-            QuoteLineItemDTO quoteLineItemDTO = new QuoteLineItemDTO
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                QuoteName = "COT-01",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
             };
 
-            quoteLineItemDTOs.Add(quoteLineItemDTO);
-
-            QuoteDTO quoteDTO = new QuoteDTO
-            {
-                QuoteName = "COT-01",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItemDTOs
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
-            quotesDTO.Add(quoteDTO);
-
-            return quotesDTO;
+            return quotes;
         }
 
-        public QuoteDTO GetQuoteByname(string quoteName)
+        public Quote GetQuoteByName(string quoteName)
         {
-            List<QuoteDTO> quotesDTO = new List<QuoteDTO>();
-            List<QuoteLineItemDTO> quoteLineItemDTOs1 = new List<QuoteLineItemDTO>();
-            List<QuoteLineItemDTO> quoteLineItemDTOs2 = new List<QuoteLineItemDTO>();
-
-            QuoteLineItemDTO quoteLineItemDTO1 = new QuoteLineItemDTO
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                QuoteName = "COT-01",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
-            };
-           
-            quoteLineItemDTOs1.Add(quoteLineItemDTO1);
-
-            QuoteLineItemDTO quoteLineItemDTO2 = new QuoteLineItemDTO
-            {
-                QuoteName = "COT-02",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
             };
 
-            quoteLineItemDTOs2.Add(quoteLineItemDTO2);
-
-            QuoteDTO quoteDTO1 = new QuoteDTO
-            {
-                QuoteName = "COT-01",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItemDTOs1
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
-            QuoteDTO quoteDTO2 = new QuoteDTO
-            {
-                QuoteName = "COT-02",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItemDTOs2
-            };
-
-            quotesDTO.Add(quoteDTO1);
-            quotesDTO.Add(quoteDTO2);
-
-            foreach (QuoteDTO quote in quotesDTO)
+            foreach (Quote quote in quotes)
             {
                 if (quote.QuoteName.Equals(quoteName))
                 {
@@ -92,125 +43,76 @@ namespace Services
             }
 
             return null;
-
         }
 
-        public void PostQuote(QuoteDTO newQuoteDTO)
+        public Quote Save(Quote quote)
         {
-            List<QuoteDTO> quotesDTO = new List<QuoteDTO>();
-            List<QuoteLineItemDTO> quoteLineItemDTOs1 = new List<QuoteLineItemDTO>();
-            List<QuoteLineItemDTO> quoteLineItemDTOs2 = new List<QuoteLineItemDTO>();
-
-            QuoteLineItemDTO quoteLineItemDTO1 = new QuoteLineItemDTO
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                QuoteName = "COT-01",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
             };
 
-            quoteLineItemDTOs1.Add(quoteLineItemDTO1);
-
-            QuoteLineItemDTO quoteLineItemDTO2 = new QuoteLineItemDTO
-            {
-                QuoteName = "COT-02",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
-            quoteLineItemDTOs2.Add(quoteLineItemDTO2);
-
-            QuoteDTO quoteDTO1 = new QuoteDTO
+            try
             {
-                QuoteName = "COT-01",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItemDTOs1
-            };
+                quotes.Add(quote);
 
-            QuoteDTO quoteDTO2 = new QuoteDTO
+                return quote;
+            }
+            catch (System.Exception)
             {
-                QuoteName = "COT-02",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItemDTOs2
-            };
-
-            quotesDTO.Add(quoteDTO1);
-            quotesDTO.Add(quoteDTO2);
-            quotesDTO.Add(newQuoteDTO);
-
+                throw;
+            }
         }
 
-        public void UpdateByName(string quoteName, QuoteDTO quoteUpdated)
+        public void UpdateByName(string quoteName, Quote quoteUpdated)
         {
-            List<QuoteDTO> quotes = new List<QuoteDTO>();
-            List<QuoteLineItemDTO> quoteLineItems = new List<QuoteLineItemDTO>();
-
-            QuoteLineItemDTO quoteLineItem = new QuoteLineItemDTO
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                QuoteName = "COT-01",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
             };
 
-            quoteLineItems.Add(quoteLineItem);
-
-            QuoteDTO quote1 = new QuoteDTO
-            {
-                QuoteName = "COT-01",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItems
-            };
-            QuoteDTO quote2 = new QuoteDTO
-            {
-                QuoteName = "COT-03",
-                ClientCode = "MTR-300095",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItems
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
-            quotes.Add(quote1);
-            quotes.Add(quote2);
-
-            int index = quotes.IndexOf(quotes.Find(quote => quote.QuoteName.Equals(quoteName)));
-            quotes[index] = quoteUpdated;
+            try
+            {
+                int index = quotes.IndexOf(quotes.Find(quote => quote.QuoteName.Equals(quoteName)));
+                quotes[index] = quoteUpdated;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            } 
         }
 
         public void DeleteByName(string quoteName)
         {
-            List<QuoteDTO> quotes = new List<QuoteDTO>();
-            List<QuoteLineItemDTO> quoteLineItems = new List<QuoteLineItemDTO>();
-
-            QuoteLineItemDTO quoteLineItem = new QuoteLineItemDTO
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                QuoteName = "COT-01",
-                ProductCode = "EMP-000001",
-                Price = 5,
-                Quantity = 10
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
             };
 
-            quoteLineItems.Add(quoteLineItem);
-
-            QuoteDTO quote1 = new QuoteDTO
-            {
-                QuoteName = "COT-01",
-                ClientCode = "MTR-300065",
-                Date = new DateTime(),
-                Sold = true,
-                QuoteLineItems = quoteLineItems
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
-            quotes.Add(quote1);
-
-            quotes.RemoveAll(quote => quote.QuoteName.Equals(quoteName));
+            try
+            {
+                quotes.RemoveAll(quote => quote.QuoteName.Equals(quoteName));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            
         }
     }
 }
