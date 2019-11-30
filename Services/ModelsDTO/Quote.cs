@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Services.Models
 {
-    public class QuoteDTO
+    public class Quote
     {
         public string QuoteName { get; set; }
         public string ClientCode { get; set; }
         public DateTime Date { get; set; }
         public bool Sold { get; set; }
-        public List<QuoteLineItemDTO> QuoteLineItems { get; set; }
+        public List<QuoteLineItem> QuoteLineItems { get; set; }
     }
 }
