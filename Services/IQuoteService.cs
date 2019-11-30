@@ -9,6 +9,10 @@ namespace Services
 
         Quote GetQuoteByName(string quoteName);
 
+        List<Quote> GetAllSold();
+
+        List<Quote> GetAllPending();
+
         Quote Save(Quote quote);
 
         void UpdateByName(string quoteName, Quote quoteUpdated);

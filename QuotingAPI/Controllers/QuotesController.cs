@@ -39,11 +39,19 @@ namespace QuotingAPI.Controllers
         }
 
         // GET REPORTS
-        /* [HttpGet]
-        [Route("quote-management/quotes/pending")] sold = false
+        [HttpGet]
+        [Route("quote-management/quotes/pending")]
+        public ActionResult<IEnumerable<Quote>> GetAllPending()
+        {
+            return _quoteservice.GetAllPending();
+        }
 
         [HttpGet]
-        [Route("quote-management/quotes/sold")] sold = true*/
+        [Route("quote-management/quotes/sold")]
+        public ActionResult<IEnumerable<Quote>> GetAllSold()
+        {
+            return _quoteservice.GetAllSold();
+        }
 
         // POST
         [HttpPost]

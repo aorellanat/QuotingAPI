@@ -45,6 +45,58 @@ namespace Services
             return null;
         }
 
+        public List<Quote> GetAllPending()
+        {
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
+            {
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+            };
+
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = false, QuoteLineItems = quoteLineItem }
+            };
+
+            List<Quote> quotesPending = new List<Quote>();
+
+
+            foreach (Quote quote in quotes)
+            {
+                if (!quote.Sold)
+                {
+                    quotesPending.Add(quote);
+                }
+            }
+
+            return quotesPending;
+        }
+
+        public List<Quote> GetAllSold()
+        {
+            List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
+            {
+                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+            };
+
+            List<Quote> quotes = new List<Quote>() {
+                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = false, QuoteLineItems = quoteLineItem }
+            };
+
+            List<Quote> quotesSold = new List<Quote>();
+
+
+            foreach (Quote quote in quotes)
+            {
+                if (quote.Sold)
+                {
+                    quotesSold.Add(quote);
+                }
+            }
+
+            return quotesSold;
+        }
+
         public Quote Save(Quote quote)
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
