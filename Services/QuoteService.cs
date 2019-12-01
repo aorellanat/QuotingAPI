@@ -11,12 +11,12 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             return quotes;
@@ -26,12 +26,12 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             foreach (Quote quote in quotes)
@@ -49,16 +49,15 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = false, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             List<Quote> quotesPending = new List<Quote>();
-
 
             foreach (Quote quote in quotes)
             {
@@ -75,16 +74,15 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = false, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             List<Quote> quotesSold = new List<Quote>();
-
 
             foreach (Quote quote in quotes)
             {
@@ -101,12 +99,12 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             try
@@ -125,12 +123,12 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             try
@@ -149,12 +147,12 @@ namespace Services
         {
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
-                new QuoteLineItem() { QuoteName = "COT-01", ProductCode = "EMP-000001", Price = 5, Quantity = 10 }
+                new QuoteLineItem() { QuoteName = "COT-001", ProductCode = "EMP-001", Price = 5, Quantity = 10 }
             };
 
             List<Quote> quotes = new List<Quote>() {
-                new Quote() { QuoteName = "COT-01", ClientCode = "MTR-300065", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
-                new Quote() { QuoteName = "COT-02", ClientCode = "PTR-300015", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
+                new Quote() { QuoteName = "COT-001", ClientCode = "MTR-64000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem },
+                new Quote() { QuoteName = "COT-002", ClientCode = "PTR-65000001", Date = new DateTime(), Sold = true, QuoteLineItems = quoteLineItem }
             };
 
             try
