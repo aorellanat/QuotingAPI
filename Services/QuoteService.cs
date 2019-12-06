@@ -207,5 +207,18 @@ namespace Services
                 throw;
             }  
         }
+
+        // Error
+        public List<Quote> GetAllWithError()
+        {
+            try
+            {
+                throw new NullReferenceException("Exception: list value null");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
