@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using QuotingAPI.Middlewares;
 using Services;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -62,14 +63,20 @@ namespace QuotingAPI
                 app.UseHsts();
             }
 
+            // Middlewares
+            app.UseMiddleware(typeof(ExceptionMiddleware));
+
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            // Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Values Api V1");
             });
 
+            // Cors
             app.UseCors("AllowAll");
         }
     }

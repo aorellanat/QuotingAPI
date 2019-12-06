@@ -27,7 +27,8 @@ namespace QuotingAPI.Controllers
         [Route("quote-management/quotes")]
         public ActionResult<IEnumerable<Quote>> GetAll()
         {
-            return _quoteservice.GetAll();
+            // return _quoteservice.GetAll();
+            return _quoteservice.GetAllWithError();
         }
 
         // GET by name

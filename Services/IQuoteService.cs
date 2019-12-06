@@ -18,5 +18,6 @@ namespace Services
         Quote UpdateByName(string quoteName, Quote quoteUpdated);
 
         void DeleteByName(string quoteName);
+        List<Quote> GetAllWithError();
     }
 }
