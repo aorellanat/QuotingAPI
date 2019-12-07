@@ -1,10 +1,11 @@
 ﻿using Services.Models;
+using Services.Exceptions;
 using System;
 using System.Collections.Generic;
 
 namespace Services
 {
-    public class QuoteService:IQuoteService
+    public class QuoteService : IQuoteService
     {
         public List<Quote> GetAll()
         {
@@ -134,6 +135,13 @@ namespace Services
                 new Quote() { QuoteName = "COT-002", ClientCode = "VC-63695635", Date = new DateTime(2019, 5, 15), Sold = true, QuoteLineItems = quoteLineItem2 }
             };
 
+
+            Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quote.QuoteName));
+            if (quotefinded != null)
+            {
+                throw new QuoteNameAlreadyExists();
+            }
+
             try
             {
                 quotes.Add(quote);
@@ -142,9 +150,10 @@ namespace Services
 
                 return quote;
             }
-            catch (System.Exception)
+
+            catch (QuoteNameAlreadyExists qd)
             {
-                throw;
+                throw qd;
             }
         }
 
@@ -164,6 +173,17 @@ namespace Services
                 new Quote() { QuoteName = "COT-002", ClientCode = "VC-63695635", Date = new DateTime(2019, 5, 15), Sold = true, QuoteLineItems = quoteLineItem2 }
             };
 
+            if (String.IsNullOrEmpty(quoteName) | String.IsNullOrEmpty(quoteUpdated.QuoteName))
+            {
+                throw new QuoteNameInvalid();
+            }
+
+            Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quoteUpdated.QuoteName));
+            if (quotefinded != null)
+            {
+                throw new QuoteNameAlreadyExists();
+            }
+
             try
             {
                 int index = quotes.IndexOf(quotes.Find(quote => quote.QuoteName.Equals(quoteName)));
@@ -173,10 +193,17 @@ namespace Services
 
                 return quotes[index];
             }
-            catch (System.Exception)
+            catch (QuoteNameInvalid qe)
             {
-                throw;
-            } 
+                throw qe;
+            }
+            catch (QuoteNameAlreadyExists qd)
+            {
+                throw qd;
+            }
+
+
+
         }
 
         public void DeleteByName(string quoteName)
@@ -205,7 +232,7 @@ namespace Services
             catch (System.Exception)
             {
                 throw;
-            }  
+            }
         }
 
         // Error
@@ -221,4 +248,5 @@ namespace Services
             }
         }
     }
+
 }
