@@ -239,6 +239,12 @@ namespace Services
                 new Quote() { QuoteName = "COT-002", ClientCode = "VC-63695635", Date = new DateTime(2019, 5, 15), Sold = true, QuoteLineItems = quoteLineItem2 }
             };
 
+            Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quoteName));
+            if (String.IsNullOrEmpty(quoteName) | quotefinded == null)
+            {
+                throw new QuoteNameDoesNotExist();
+            }
+
             try
             {
                 quotes.RemoveAll(quote => quote.QuoteName.Equals(quoteName));
@@ -246,9 +252,9 @@ namespace Services
                 Console.WriteLine("\nRemoving quote with name " + quoteName + "...\n");
 
             }
-            catch (System.Exception)
+            catch (QuoteNameDoesNotExist qne)
             {
-				 throw;
+                throw qne;
             }
         }
 

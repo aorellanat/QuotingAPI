@@ -30,34 +30,31 @@ namespace QuotingAPI.Middlewares
                 await ProcessError(httpContext, ex);
             }
         }
-		private static int getCode(Exception ex)
-		{
-			int code = 500;
-			if (ex.GetType() == typeof(QuoteNameAlreadyExists))
-				code = ((QuoteNameAlreadyExists)ex).Code;
-			if (ex.GetType() == typeof(QuoteNameInvalid))
-				code = ((QuoteNameInvalid)ex).Code;
-			return code;
-		}
-		private static Task ProcessError(HttpContext context, Exception ex) 
+        private static int getCode(Exception ex)
+        {
+            int code = 500;
+            if (ex.GetType() == typeof(QuoteNameAlreadyExists))
+                code = ((QuoteNameAlreadyExists)ex).Code;
+            if (ex.GetType() == typeof(QuoteNameInvalid))
+                code = ((QuoteNameInvalid)ex).Code;
+            if (ex.GetType() == typeof(QuoteNameDoesNotExist))
+                code = ((QuoteNameDoesNotExist)ex).Code;
+
+            return code;
+        }
+
+        private static Task ProcessError(HttpContext context, Exception ex) 
         {
             context.Response.ContentType = "application/json";
 
             var errorObj = new
             {
-                Code = getCode(ex), // getCode
+                code = getCode(ex),
                 message = ex.Message
             };
 
-		
-			//getcode
-			
-
-
-
-
-			string jsonObj = JsonConvert.SerializeObject(errorObj);
-			context.Response.StatusCode = getCode(ex);
+            string jsonObj = JsonConvert.SerializeObject(errorObj);
+            context.Response.StatusCode = getCode(ex);
             return context.Response.WriteAsync(jsonObj);
         }
     }

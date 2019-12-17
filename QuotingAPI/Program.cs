@@ -19,7 +19,7 @@ namespace QuotingAPI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-				.UseUrls("http://localhost:8091")
+                .UseUrls("http://localhost:8091")
                 .UseStartup<Startup>();
     }
 }

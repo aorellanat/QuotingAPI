@@ -7,9 +7,8 @@ namespace Services.Exceptions
     [Serializable]
     public class QuoteNameInvalid : Exception
     {
-		public int Code { get { return 610; } }
-
-		private static readonly string defaultMessage = "Quote name invalid. Please check it.";
+        public int Code { get { return 515; } }
+        private static readonly string defaultMessage = "Nombre de cotización inválido. Por favor revise el nombre.";
 
         public QuoteNameInvalid() : base(defaultMessage) { }
         public QuoteNameInvalid(string message) : base(message) { }
@@ -24,8 +23,8 @@ namespace Services.Exceptions
     [Serializable]
     public class QuoteNameAlreadyExists : Exception
     {
-		public int Code { get { return 600; } }
-        private static readonly string defaultMessage = "Quote name already exists. Please change the name.";
+        public int Code { get { return 516; } }
+        private static readonly string defaultMessage = "Nombre de cotización ya existente. Por favor cambie el nombre.";
 
         public QuoteNameAlreadyExists() : base(defaultMessage) { }
         public QuoteNameAlreadyExists(string message) : base(message) { }
@@ -36,12 +35,26 @@ namespace Services.Exceptions
             : base(info, context) { }
 
     }
-	public class QuoteNotFound : Exception
-	{
-		public int Code { get { return 577; } }
-		private static readonly string defaultMessage = "Cotización no entontrada";
 
-		public QuoteNotFound() : base(defaultMessage) { }
+    [Serializable]
+    public class QuoteNameDoesNotExist : Exception
+    {
+        public int Code { get { return 517; } }
+        private static readonly string defaultMessage = "Nombre de cotización no encontrado. Por favor vuelva a intentarlo.";
+
+        public QuoteNameDoesNotExist() : base(defaultMessage) { }
+        public QuoteNameDoesNotExist(string message) : base(message) { }
+        public QuoteNameDoesNotExist(string message, Exception inner) : base(message, inner) { }
+        protected QuoteNameDoesNotExist(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+    }
+    public class QuoteNotFound : Exception
+	  {
+		    public int Code { get { return 577; } }
+		    private static readonly string defaultMessage = "Cotización no entontrada";
+
+		    public QuoteNotFound() : base(defaultMessage) { }
 	}
-
 }
