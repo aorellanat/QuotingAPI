@@ -198,7 +198,7 @@ namespace Services
             }
 			else if ( quotefinded == null)
 			{
-				throw new QuoteNotFound();
+				throw new QuoteNameInvalid();
 			}
 
             try
