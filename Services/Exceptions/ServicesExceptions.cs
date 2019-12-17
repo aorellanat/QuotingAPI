@@ -35,6 +35,7 @@ namespace Services.Exceptions
             : base(info, context) { }
 
     }
+
     [Serializable]
     public class QuoteNameDoesNotExist : Exception
     {
@@ -48,6 +49,12 @@ namespace Services.Exceptions
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
-
     }
+    public class QuoteNotFound : Exception
+	  {
+		    public int Code { get { return 577; } }
+		    private static readonly string defaultMessage = "Cotización no entontrada";
+
+		    public QuoteNotFound() : base(defaultMessage) { }
+	}
 }
