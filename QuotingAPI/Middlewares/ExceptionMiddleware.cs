@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Services.Exceptions;
 
 namespace QuotingAPI.Middlewares
 {
@@ -29,6 +30,18 @@ namespace QuotingAPI.Middlewares
                 await ProcessError(httpContext, ex);
             }
         }
+        private static int getCode(Exception ex)
+        {
+            int code = 500;
+            if (ex.GetType() == typeof(QuoteNameAlreadyExists))
+                code = ((QuoteNameAlreadyExists)ex).Code;
+            if (ex.GetType() == typeof(QuoteNameInvalid))
+                code = ((QuoteNameInvalid)ex).Code;
+            if (ex.GetType() == typeof(QuoteNameDoesNotExist))
+                code = ((QuoteNameDoesNotExist)ex).Code;
+
+            return code;
+        }
 
         private static Task ProcessError(HttpContext context, Exception ex) 
         {
@@ -36,11 +49,12 @@ namespace QuotingAPI.Middlewares
 
             var errorObj = new
             {
-                code = 500,
+                code = getCode(ex),
                 message = ex.Message
             };
 
             string jsonObj = JsonConvert.SerializeObject(errorObj);
+            context.Response.StatusCode = getCode(ex);
             return context.Response.WriteAsync(jsonObj);
         }
     }
