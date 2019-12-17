@@ -7,7 +7,9 @@ namespace Services.Exceptions
     [Serializable]
     public class QuoteNameInvalid : Exception
     {
-        private static readonly string defaultMessage = "Quote name invalid. Please check it.";
+		public int Code { get { return 610; } }
+
+		private static readonly string defaultMessage = "Quote name invalid. Please check it.";
 
         public QuoteNameInvalid() : base(defaultMessage) { }
         public QuoteNameInvalid(string message) : base(message) { }
@@ -22,6 +24,7 @@ namespace Services.Exceptions
     [Serializable]
     public class QuoteNameAlreadyExists : Exception
     {
+		public int Code { get { return 600; } }
         private static readonly string defaultMessage = "Quote name already exists. Please change the name.";
 
         public QuoteNameAlreadyExists() : base(defaultMessage) { }
@@ -33,5 +36,12 @@ namespace Services.Exceptions
             : base(info, context) { }
 
     }
+	public class QuoteNotFound : Exception
+	{
+		public int Code { get { return 577; } }
+		private static readonly string defaultMessage = "Cotización no entontrada";
+
+		public QuoteNotFound() : base(defaultMessage) { }
+	}
 
 }

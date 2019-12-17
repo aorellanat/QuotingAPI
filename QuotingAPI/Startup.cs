@@ -66,7 +66,7 @@ namespace QuotingAPI
             // Middlewares
             app.UseMiddleware(typeof(ExceptionMiddleware));
 
-            app.UseHttpsRedirection();
+			app.UseHttpsRedirection();
             app.UseMvc();
 
             // Swagger

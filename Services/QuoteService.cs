@@ -30,7 +30,12 @@ namespace Services
 
         public Quote GetQuoteByName(string quoteName)
         {
-            Console.WriteLine("\nSending quote with name " + quoteName + "...\n");
+
+			if (String.IsNullOrEmpty(quoteName))
+			{
+				throw new QuoteNameInvalid();
+			}
+			Console.WriteLine("\nSending quote with name " + quoteName + "...\n");
 
             List<QuoteLineItem> quoteLineItem = new List<QuoteLineItem>()
             {
@@ -45,16 +50,24 @@ namespace Services
                 new Quote() { QuoteName = "COT-001", ClientCode = "MT-47623444", Date = new DateTime(2019, 5, 12), Sold = false, QuoteLineItems = quoteLineItem },
                 new Quote() { QuoteName = "COT-002", ClientCode = "VC-63695635", Date = new DateTime(2019, 5, 15), Sold = true, QuoteLineItems = quoteLineItem2 }
             };
-
+			Quote actualQuote = null;
             foreach (Quote quote in quotes)
             {
                 if (quote.QuoteName.Equals(quoteName))
                 {
-                    return quote;
+					actualQuote =  quote;
                 }
             }
+			if( actualQuote == null)
+			{
+				throw new QuoteNotFound();
+			}
+			else
+			{
 
-            return new Quote();
+				return actualQuote;
+   }
+
         }
 
         public List<Quote> GetAllPending()
@@ -183,6 +196,10 @@ namespace Services
             {
                 throw new QuoteNameAlreadyExists();
             }
+			else if ( quotefinded == null)
+			{
+				throw new QuoteNotFound();
+			}
 
             try
             {
@@ -231,7 +248,7 @@ namespace Services
             }
             catch (System.Exception)
             {
-                throw;
+				 throw;
             }
         }
 
