@@ -33,7 +33,7 @@ namespace Services
 
 			if (String.IsNullOrEmpty(quoteName))
 			{
-				throw new QuoteNameInvalid();
+				throw new QuoteNameInvalid("Obtención de cotización fallida. Nombre de cotización inválido");
 			}
 			Console.WriteLine("\nSending quote with name " + quoteName + "...\n");
 
@@ -60,7 +60,7 @@ namespace Services
             }
 			if( actualQuote == null)
 			{
-				throw new QuoteNotFound();
+				throw new QuoteNotFound("Obtención de cotización fallida. Cotización no encontrada.");
 			}
 			else
 			{
@@ -152,7 +152,7 @@ namespace Services
             Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quote.QuoteName));
             if (quotefinded != null)
             {
-                throw new QuoteNameAlreadyExists();
+                throw new QuoteNameAlreadyExists("Creación de cotización fallida. Nombre de cotización ya existe.");
             }
 
             try
@@ -188,17 +188,17 @@ namespace Services
 
             if (String.IsNullOrEmpty(quoteName) | String.IsNullOrEmpty(quoteUpdated.QuoteName))
             {
-                throw new QuoteNameInvalid();
+                throw new QuoteNameInvalid("Actualización de usuario fallida. Nombre de cotización inválido");
             }
 
             Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quoteUpdated.QuoteName));
             if (quotefinded != null)
             {
-                throw new QuoteNameAlreadyExists();
+                throw new QuoteNameAlreadyExists("Actualización de usuario fallida. Nombre de cotización ya existente");
             }
 			else if ( quotefinded == null)
 			{
-				throw new QuoteNameInvalid();
+				throw new QuoteNameInvalid("Actualización de usuario fallida. Nombre de cotización inválido");
 			}
 
             try
@@ -242,7 +242,7 @@ namespace Services
             Quote quotefinded = quotes.Find(x => x.QuoteName.Contains(quoteName));
             if (String.IsNullOrEmpty(quoteName) | quotefinded == null)
             {
-                throw new QuoteNameDoesNotExist();
+                throw new QuoteNameDoesNotExist("Eliminaición de cotización fallida. Nombre de cotización no existe.");
             }
 
             try
