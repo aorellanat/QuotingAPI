@@ -19,12 +19,19 @@ namespace QuotingAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+		public Startup(IHostingEnvironment env)
+		{
+			var builder = new ConfigurationBuilder()
+				.SetBasePath(env.ContentRootPath)
+				.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
+				.AddEnvironmentVariables();
+			Configuration = builder.Build();
 
-        public IConfiguration Configuration { get; }
+			Console.WriteLine("ENV ===> " + $"appsettings.{env.EnvironmentName}.json");
+		}
+
+
+		public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
